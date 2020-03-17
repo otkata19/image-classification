@@ -1,0 +1,39 @@
+{% extends 'classify/base.html' %}
+{% block content %}
+<div style="padding:1em;">
+    <div class="page-header">
+        <h1>nwssアプリケーション<small><br>オードリー若林・いきものがかりボーカル・カワウソを分類</small></h1>
+    </div>
+    <form method="POST" action="{% url 'classify:index' %}" enctype="multipart/form-data" class="form-horizontal">
+        {% csrf_token %}
+        <div class='form-group'>
+            <div class='col-sm-4'>{{form.as_p}}</div>
+            <div class='col-sm-8'><button type="submit" class="btn btn-primary">分類する</button></div>
+        </div>
+    </form>
+    <p class="message">判定画像</p>
+    <ul>
+        {% if result_name != "" %}
+            <li>{{ result_name }}</li>
+        {% else %}
+            <li>画像なし</li>
+        {% endif %}
+    </ul>
+    <p class="message">判定結果</p>
+    <ol>
+        {% if result_list %}
+            {% for result in result_list %}
+                <li>{{ result }}</li>
+            {% endfor %}
+        {% else %}
+            <li>結果なし</li>
+        {% endif %}
+    </ol>
+    <div class="image">
+        {% if img != "" %}
+            <img src="{{img}}"/>
+            <li>{{ img }}</li>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
