@@ -2,7 +2,7 @@
 {% block content %}
 <div style="padding:1em;">
     <div class="page-header">
-        <h1>nwssアプリケーション<small><br>オードリー若林・いきものがかりボーカル・カワウソを分類</small></h1>
+        <h1>画像分類アプリケーション<small><br>オードリー若林・いきものがかりボーカル・カワウソを分類</small></h1>
     </div>
     <form method="POST" action="{% url 'classify:index' %}" enctype="multipart/form-data" class="form-horizontal">
         {% csrf_token %}
